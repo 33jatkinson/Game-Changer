@@ -6,16 +6,12 @@ import { createUser } from "./data/users.js";
 const app = express();
 app.use(express.json());
 
-// Connect to the database once when the server starts
+// Connect to the database once the server starts
 const db = await dbConnection();
 
-// Example route to create a user
 app.post("/users", async (req, res) => {
   try {
-    // If your createUser function uses request data:
-    // const user = await createUser(req.body);
 
-    // If it doesn’t take arguments yet:
     const user = await createUser();
 
     res.status(201).json({
