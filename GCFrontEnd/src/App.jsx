@@ -1,7 +1,7 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { Login } from "./components/Login/Login";
-import { CreateAccount } from "./components/createAccount/createAccount";
+import { CreateAccount } from "./components/CreateAccount/CreateAccount";
 
 function App() {
   return (

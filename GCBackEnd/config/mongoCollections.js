@@ -1,4 +1,4 @@
-import { dbConnection } from './mongoConnection.js';
+import { dbConnection } from "./mongoConnection.js";
 
 /* This will allow you to have one reference to each collection per app */
 const getCollectionFn = (collection) => {
@@ -15,4 +15,4 @@ const getCollectionFn = (collection) => {
 };
 
 // Now, you can list your collections here:
-export const users = getCollectionFn('users');
+export const users = getCollectionFn("users");

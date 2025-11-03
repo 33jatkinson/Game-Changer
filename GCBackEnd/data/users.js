@@ -1,15 +1,12 @@
 import { users } from "../config/mongoCollections.js";
 
-export async function createUser() {
-    const usersCollection = await users();
+export async function createUser(username, password) {
+  const usersCollection = await users();
 
-    const newUser = {
-        username: "Jared",
-        password: "password"
-    }
+  const newUser = { username, password };
 
-    const insertInfo = await usersCollection.insertOne(newUser);
-    if (!insertInfo.acknowledged || !insertInfo.insertedId)
-        throw new Error("Could not add user!");
-    console.log("User created successfully")
+  const insertInfo = await usersCollection.insertOne(newUser);
+  if (!insertInfo.acknowledged || !insertInfo.insertedId)
+    throw new Error("Could not add user!");
+  return true;
 }

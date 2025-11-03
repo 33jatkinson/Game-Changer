@@ -1,30 +1,13 @@
-// server.js
-import express from "express";
-import { dbConnection } from "./config/mongoConnection.js";
 import { createUser } from "./data/users.js";
+import { dbConnection, closeConnection } from "./config/mongoConnection.js";
+import { configureRoutes } from "./routes/index.js";
+import express from "express";
+import cors from "cors";
 
 const app = express();
+app.use(cors());
 app.use(express.json());
-
-// Connect to the database once the server starts
-const db = await dbConnection();
-
-app.post("/users", async (req, res) => {
-  try {
-
-    const user = await createUser();
-
-    res.status(201).json({
-      message: "User created successfully",
-      user,
-    });
-  } catch (error) {
-    console.error("Error creating user:", error);
-    res.status(500).json({ error: "Failed to create user" });
-  }
-});
-
-const PORT = 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+configureRoutes(app);
+app.listen(5000, () => {
+  console.log("GCBackEnd webserver is running on http://localhost:5000");
 });

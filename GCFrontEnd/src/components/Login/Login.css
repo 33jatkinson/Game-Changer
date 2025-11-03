@@ -10,7 +10,6 @@ form {
   align-items: stretch;
 }
 
-/* Make labels align cleanly */
 label {
   display: flex;
   flex-direction: column;
@@ -18,7 +17,6 @@ label {
   color: #333;
 }
 
-/* Make input boxes match perfectly */
 input[type="text"],
 input[type="password"] {
   width: 100%;
@@ -29,7 +27,6 @@ input[type="password"] {
   box-sizing: border-box;
 }
 
-/* Center the login button */
 button {
   align-self: center;
   width: 60%;

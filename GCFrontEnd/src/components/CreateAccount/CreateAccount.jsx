@@ -6,14 +6,19 @@ export function CreateAccount() {
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (password !== confirm) {
       alert("Passwords do not match!");
       return;
     }
-    console.log("Creating account:", username);
     // Backend Goes Here
+    let result = await fetch("http://localhost:5000/create-account", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, password }),
+    });
+    console.log(result);
   };
 
   return (
