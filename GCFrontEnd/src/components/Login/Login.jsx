@@ -1,15 +1,40 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 
 export function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Username:", username);
-    console.log("Password:", password);
+    setIsLoading(true);
+    try {
+      const res = await fetch("http://localhost:5000/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password }),
+      });
+
+      if (res.ok) {
+        // Login succeeded — send user to main page
+        navigate("/main");
+      } else if (res.status === 401) {
+        alert(
+          "Invalid username or password. Make sure you created an account."
+        );
+      } else {
+        const data = await res.json().catch(() => ({}));
+        alert(data.error || "Error logging in");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Network error while logging in");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -30,7 +55,9 @@ export function Login() {
           onChange={(e) => setPassword(e.target.value)}
         />
       </label>
-      <button type="submit">Login</button>
+      <button type="submit" disabled={isLoading}>
+        {isLoading ? "Logging in..." : "Login"}
+      </button>
       <p>
         <Link to="/create-account">Create Account</Link>
       </p>

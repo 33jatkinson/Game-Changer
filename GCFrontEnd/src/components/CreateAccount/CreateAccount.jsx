@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../Login/Login.css";
 
 export function CreateAccount() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,6 +21,11 @@ export function CreateAccount() {
       body: JSON.stringify({ username, password }),
     });
     console.log(result);
+    if (result.ok) {
+      navigate("/");
+    } else {
+      alert("Error creating account.");
+    }
   };
 
   return (

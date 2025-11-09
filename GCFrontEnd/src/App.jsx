@@ -2,6 +2,7 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { Login } from "./components/Login/Login";
 import { CreateAccount } from "./components/CreateAccount/CreateAccount";
+import { Main } from "./components/Main/Main";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       </Routes>
     </div>
   );
+  <Route path="/main" element={<Main />} />;
 }
 
 export default App;
