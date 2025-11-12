@@ -3,8 +3,13 @@ import "./Main.css";
 export function Main() {
   return (
     <div className="main-page">
-      <h2>Main Page</h2>
-      <p>Welcome to the main page — you are logged in.</p>
+      <select>
+        <option value="option1">Option 1</option>
+        <option value="option2">Option 2</option>
+      </select>
+      <form characters="main-content">
+        <p>Welcome</p>
+      </form>
     </div>
   );
 }

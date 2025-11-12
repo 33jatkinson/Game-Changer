@@ -12,10 +12,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/create-account" element={<CreateAccount />} />
+        <Route path="/main" element={<Main />} />
       </Routes>
     </div>
   );
-  <Route path="/main" element={<Main />} />;
 }
 
 export default App;
