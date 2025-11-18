@@ -1,52 +1,104 @@
-form {
+/* Container and title */
+.main-page {
+  width: 100%;
+}
+
+.organized-container {
+  max-width: 1000px;
+  margin: 32px auto;
+  padding: 20px;
+  background: transparent;
+  border-radius: 12px;
   display: flex;
   flex-direction: column;
   gap: 18px;
-  height: 320px;
-  width: 320px;
-  padding: 25px;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.18);
-  align-items: stretch;
 }
 
-label {
+.main-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+/* Section */
+.main-section {
+  padding: 16px 0;
+  border-top: 1px solid #eee;
   display: flex;
   flex-direction: column;
-  font-weight: 500;
-  color: #333;
+  gap: 12px;
 }
 
-input[type="text"],
-input[type="password"] {
+.section-title {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #444;
+}
+
+/* Layout for left/right columns */
+.main-layout {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.main-left {
+  flex: 2 1 0;
+}
+
+.main-right {
+  flex: 1 1 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Panels on the right */
+.actions-panel,
+.history-panel {
+  background: #fff;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+.actions-panel h4,
+.history-panel h4 {
+  margin: 0 0 12px 0;
+  font-size: 1rem;
+}
+
+/* Buttons in Actions panel */
+.actions-panel .primary,
+.actions-panel .secondary {
+  display: block;
   width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  box-sizing: border-box;
-}
-
-button {
-  align-self: center;
-  width: 60%;
-  padding: 10px;
-  border-radius: 6px;
-  background-color: #4caf50;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  border-radius: 8px;
   border: none;
-  color: white;
-  font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
 }
 
-button:hover {
-  background-color: #45a049;
+.actions-panel .primary {
+  background: #4caf50;
+  color: #fff;
 }
 
-form p {
-  margin: 0;
-  text-align: center;
-  font-size: 14px;
-  color: #444;
+.actions-panel .secondary {
+  background: #1976d2;
+  color: #fff;
+}
+
+.history-list {
+  min-height: 120px;
+  color: #666;
+}
+
+/* Optional: make layout stack on small screens */
+@media (max-width: 768px) {
+  .main-layout {
+    flex-direction: column;
+  }
 }

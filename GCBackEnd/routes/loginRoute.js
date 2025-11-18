@@ -18,7 +18,6 @@ loginRouter.route("/").post(async (req, res) => {
       return res.status(401).json({ error: "Invalid username or password" });
     }
 
-    // NOTE: passwords are stored plaintext in this project; compare directly.
     if (user.password !== password) {
       return res.status(401).json({ error: "Invalid username or password" });
     }
