@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Character.css";
 
-const character = {
+export const character = {
   valorant: [
     "Jett",
     "Phoenix",
@@ -32,18 +32,40 @@ const character = {
     "Iso",
     "Clove",
   ],
-  marvelRivals: ["Thor", "Iron Man", "Black Widow"],
+  marvelRivals: [
+    "Thor",
+    "Iron Man",
+    "Black Widow",
+    "Hulk",
+    "Captain America",
+    "Spider Man",
+    "Doctor Strange",
+    "Black Panther",
+    "Scarlet Witch",
+  ],
 };
 
-export function Character() {
+export const getRandomCharacter = (selectedGame) => {
+  if (!selectedGame || !character[selectedGame]) return null;
+  const chars = character[selectedGame];
+  const randomIndex = Math.floor(Math.random() * chars.length);
+  return chars[randomIndex];
+};
+
+export function Character({ onGameChange }) {
   const [selectedGame, setSelectedGame] = useState("");
+
+  const handleGameChange = (e) => {
+    const game = e.target.value;
+    setSelectedGame(game);
+    if (onGameChange) {
+      onGameChange(game);
+    }
+  };
 
   return (
     <form className="character-form">
-      <select
-        value={selectedGame}
-        onChange={(e) => setSelectedGame(e.target.value)}
-      >
+      <select value={selectedGame} onChange={handleGameChange}>
         <option value="">Select a game</option>
         {Object.keys(character).map((game) => (
           <option key={game} value={game}>
