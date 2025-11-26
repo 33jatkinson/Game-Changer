@@ -18,8 +18,17 @@ export function Login() {
         body: JSON.stringify({ username, password }),
       });
 
+      const data = await res.json().catch(() => ({}));
+
       if (res.ok) {
         // Login succeeded — send user to main page
+        localStorage.setItem(
+          "session",
+          JSON.stringify({
+            isLoggedIn: true,
+            user: data.user,
+          })
+        );
         navigate("/main");
       } else if (res.status === 401) {
         alert(

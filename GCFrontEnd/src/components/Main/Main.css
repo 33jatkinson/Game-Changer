@@ -96,7 +96,11 @@
   color: #666;
 }
 
-/* Optional: make layout stack on small screens */
+.character {
+  min-height: 120px;
+  color: #666;
+}
+
 @media (max-width: 768px) {
   .main-layout {
     flex-direction: column;

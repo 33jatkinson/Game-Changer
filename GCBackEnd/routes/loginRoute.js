@@ -23,7 +23,13 @@ loginRouter.route("/").post(async (req, res) => {
     }
 
     // Successful login
-    return res.status(200).json({ success: true });
+    return res.status(200).json({
+      success: true,
+      user: {
+        id: user._id,
+        username: user.username,
+      },
+    });
   } catch (error) {
     console.error("Error during login:", error);
     return res.status(500).json({ error: error.message });
