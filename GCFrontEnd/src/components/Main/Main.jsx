@@ -70,9 +70,7 @@ export function Main() {
             </button>
             <h4>Random Pick</h4>
             <div className="character">
-              {randomChar
-                ? `Selected: ${randomChar}`
-                : "Character will appear here"}
+              {randomChar ? `${randomChar}` : "Character will appear here"}
             </div>
             <button className="secondary">Assign Mission</button>
           </div>
