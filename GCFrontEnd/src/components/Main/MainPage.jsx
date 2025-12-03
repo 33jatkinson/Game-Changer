@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Character, getRandomCharacter } from "../Characters/Character";
-import "./Main.css";
+import "./MainPage.css";
 
-export function Main() {
+export function MainPage() {
   const [selectedGame, setSelectedGame] = useState("");
   const [randomChar, setRandomChar] = useState(null);
   const [user, setUser] = useState(null);
@@ -31,12 +31,36 @@ export function Main() {
     }
   }, [navigate]);
 
-  const handleRandomCharacter = () => {
+  const handleRandomCharacter = async () => {
     const random = getRandomCharacter(selectedGame);
-    if (random) {
-      setRandomChar(random);
-    } else {
+    if (!random) {
       alert("Please select a game first");
+      return;
+    }
+
+    // Display the picked character
+    setRandomChar(random);
+
+    // Save to database
+    if (user?.username) {
+      try {
+        const res = await fetch("http://localhost:5000/history", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            username: user.username,
+            game: selectedGame,
+            character: random,
+          }),
+        });
+
+        if (!res.ok) {
+          const data = await res.json();
+          console.error("Error saving to history:", data.error);
+        }
+      } catch (err) {
+        console.error("Error saving to history:", err);
+      }
     }
   };
 
@@ -76,8 +100,9 @@ export function Main() {
           </div>
 
           <div className="history-panel">
-            <h4>History</h4>
-            <div className="history-list">"No History yet"</div>
+            <button className="secondary" onClick={() => navigate("/history")}>
+              View History
+            </button>
           </div>
         </aside>
       </div>
