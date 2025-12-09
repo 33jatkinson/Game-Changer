@@ -1,21 +1,40 @@
 /* Page container */
 .history-page {
-  max-width: 1000px;
+  width: 100%;
   margin: 32px auto;
   padding: 20px;
   background: transparent;
   border-radius: 12px;
   display: flex;
   flex-direction: column;
+  text-align: center;
   gap: 18px;
 }
 
-/* Title */
-.history-title {
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 8px;
-  color: #333;
+/* Action buttons container (Back + Clear) */
+.history-actions {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+/* Clear button styling to match back-btn */
+.clear-btn {
+  background: #e53935;
+  color: #fff;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 8px;
+  width: fit-content;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.clear-btn:hover {
+  background: #b71c1c;
 }
 
 /* Back button */
@@ -41,12 +60,6 @@
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
-}
-
-.history-panel h3 {
-  margin: 0 0 12px 0;
-  font-size: 1.2rem;
-  color: #444;
 }
 
 /* History list */
@@ -75,13 +88,6 @@
 .history-list li strong {
   color: #222;
   font-weight: 700;
-}
-
-/* Empty state */
-.history-empty {
-  text-align: center;
-  padding: 20px 10px;
-  color: #666;
 }
 
 /* Responsive layout */

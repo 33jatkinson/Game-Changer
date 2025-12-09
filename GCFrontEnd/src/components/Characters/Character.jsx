@@ -32,7 +32,7 @@ export const character = {
     "Waylay",
     "Yoru",
   ],
-  marvelRivals: [
+  MarvelRivals: [
     "Adam Warlock",
     "Angela",
     "Black Panther",

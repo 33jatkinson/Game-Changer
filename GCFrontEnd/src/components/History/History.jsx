@@ -60,11 +60,12 @@ export function History() {
 
   return (
     <div className="history-page">
+      <h1 className="site-title">Game Changer</h1>
       <h2>Your History</h2>
 
       <div className="history-actions">
         <button className="back-btn" onClick={() => navigate("/main")}>
-          ← Back to Main
+          Back to Main
         </button>
         <button
           className="clear-btn"

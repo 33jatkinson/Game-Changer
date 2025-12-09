@@ -1,108 +1,100 @@
-/* Container and title */
+/* --- HEADER --- */
 .main-page {
   width: 100%;
-}
-
-.organized-container {
-  max-width: 1000px;
-  margin: 32px auto;
-  padding: 20px;
-  background: transparent;
-  border-radius: 12px;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  align-items: center;
+  padding: 40px 20px;
+  box-sizing: border-box;
 }
 
-.main-title {
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 8px;
-}
-
-/* Section */
-.main-section {
-  padding: 16px 0;
-  border-top: 1px solid #eee;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.section-title {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-  color: #444;
-}
-
-/* Layout for left/right columns */
-.main-layout {
-  display: flex;
-  gap: 24px;
-  align-items: flex-start;
-}
-
-.main-left {
-  flex: 2 1 0;
-}
-
-.main-right {
-  flex: 1 1 260px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-/* Panels on the right */
-.actions-panel,
-.history-panel {
-  background: #fff;
-  padding: 16px;
-  border-radius: 10px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
-}
-
-.actions-panel h4,
-.history-panel h4 {
-  margin: 0 0 12px 0;
-  font-size: 1rem;
-}
-
-/* Buttons in Actions panel */
-.actions-panel .primary,
-.actions-panel .secondary {
-  display: block;
+.main-header {
   width: 100%;
-  padding: 10px 12px;
-  margin-bottom: 10px;
-  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.username-display {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.logout-btn {
+  background: #e53935;
+  color: #fff;
+  width: 15vh;
+  padding: 10px 16px;
   border: none;
+  border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
 }
 
-.actions-panel .primary {
-  background: #4caf50;
-  color: #fff;
+/* --- BIG BOX --- */
+.character-box {
+  width: 100%;
+  min-height: 260px;
+  border: none;
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
 }
 
-.actions-panel .secondary {
+/* --- RANDOMIZE AREA --- */
+.randomize-area {
+  margin-top: 28px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.randomize-btn {
+  background: #4caf50;
+  width: 20vh;
+  color: #fff;
+  font-size: 1.1rem;
+  padding: 12px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: normal;
+}
+
+/* RESULT TEXT */
+.random-result {
+  margin-top: 20px;
+}
+
+.you-got {
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+.result-character {
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+/* --- HISTORY BUTTON (BOTTOM RIGHT) --- */
+.history-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 40px;
+}
+
+.history-btn {
   background: #1976d2;
   color: #fff;
-}
-
-.history-list {
-  min-height: 120px;
-  color: #666;
-}
-
-.character {
-  min-height: 120px;
-  color: #666;
-}
-
-@media (max-width: 768px) {
-  .main-layout {
-    flex-direction: column;
-  }
+  width: 15vh;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
 }

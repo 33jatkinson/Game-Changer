@@ -8,8 +8,6 @@ import { History } from "./components/History/History";
 function App() {
   return (
     <div className="page-container">
-      <h1 className="site-title">Game Changer</h1>
-
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/create-account" element={<CreateAccount />} />

@@ -93,42 +93,52 @@ export function MainPage() {
   };
 
   return (
-    <div className="main-page organized-container">
+    <div className="main-page">
       <div className="main-header">
-        <h2 className="main-title">Game Changer</h2>
-        {user && <span className="welcome-text">{user.username}</span>}
-        <button className="secondary logout-btn" onClick={handleLogout}>
+        <span className="username-display">{user?.username}</span>
+        <h1 className="site-title">Game Changer</h1>
+        <button className="logout-btn" onClick={handleLogout}>
           Logout
         </button>
       </div>
 
-      <div className="main-layout">
-        <div className="main-left">
-          <div className="main-section">
-            <Character
-              onGameChange={setSelectedGame}
-              onSelectedChange={setSelectedCharacters}
-            />
-          </div>
+      <div className="character-box">
+        <Character
+          onGameChange={setSelectedGame}
+          onSelectedChange={setSelectedCharacters}
+        />
+      </div>
+
+      <div className="randomize-area">
+        <button
+          className="primary randomize-btn"
+          onClick={handleRandomCharacter}
+        >
+          Randomize
+        </button>
+
+        <div className="random-result">
+          {randomChar ? (
+            <>
+              <p className="you-got">You got,</p>
+              <p className="result-character">{`${randomChar}`}</p>
+            </>
+          ) : (
+            <>
+              <p className="you-got">You got,</p>
+              <p className="result-character">Character</p>
+            </>
+          )}
         </div>
+      </div>
 
-        <aside className="main-right">
-          <div className="actions-panel">
-            <button className="primary" onClick={handleRandomCharacter}>
-              Random Character
-            </button>
-            <h4>Random Pick</h4>
-            <div className="character">
-              {randomChar ? `${randomChar}` : "Character will appear here"}
-            </div>
-          </div>
-
-          <div className="history-panel">
-            <button className="secondary" onClick={() => navigate("/history")}>
-              View History
-            </button>
-          </div>
-        </aside>
+      <div className="history-footer">
+        <button
+          className="secondary history-btn"
+          onClick={() => navigate("/history")}
+        >
+          History
+        </button>
       </div>
     </div>
   );
