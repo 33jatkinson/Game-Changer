@@ -6,6 +6,7 @@ import "./MainPage.css";
 export function MainPage() {
   const [selectedGame, setSelectedGame] = useState("");
   const [randomChar, setRandomChar] = useState(null);
+  const [selectedCharacters, setSelectedCharacters] = useState(null);
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
@@ -32,9 +33,30 @@ export function MainPage() {
   }, [navigate]);
 
   const handleRandomCharacter = async () => {
-    const random = getRandomCharacter(selectedGame);
-    if (!random) {
+    if (!selectedGame) {
       alert("Please select a game first");
+      return;
+    }
+
+    let random = null;
+    // if parent received selected characters from Character component, use them
+    if (selectedCharacters === null) {
+      // no data yet from Character; fall back to full list
+      random = getRandomCharacter(selectedGame);
+    } else if (
+      Array.isArray(selectedCharacters) &&
+      selectedCharacters.length === 0
+    ) {
+      alert("Please select at least one character to randomize");
+      return;
+    } else {
+      const pool = selectedCharacters;
+      const idx = Math.floor(Math.random() * pool.length);
+      random = pool[idx];
+    }
+
+    if (!random) {
+      alert("No available character for the selected game");
       return;
     }
 
@@ -74,7 +96,7 @@ export function MainPage() {
     <div className="main-page organized-container">
       <div className="main-header">
         <h2 className="main-title">Game Changer</h2>
-        {user && <span className="welcome-text">Welcome, {user.username}</span>}
+        {user && <span className="welcome-text">{user.username}</span>}
         <button className="secondary logout-btn" onClick={handleLogout}>
           Logout
         </button>
@@ -83,7 +105,10 @@ export function MainPage() {
       <div className="main-layout">
         <div className="main-left">
           <div className="main-section">
-            <Character onGameChange={setSelectedGame} />
+            <Character
+              onGameChange={setSelectedGame}
+              onSelectedChange={setSelectedCharacters}
+            />
           </div>
         </div>
 
@@ -96,7 +121,6 @@ export function MainPage() {
             <div className="character">
               {randomChar ? `${randomChar}` : "Character will appear here"}
             </div>
-            <button className="secondary">Assign Mission</button>
           </div>
 
           <div className="history-panel">

@@ -62,9 +62,32 @@ export function History() {
     <div className="history-page">
       <h2>Your History</h2>
 
-      <button className="back-btn" onClick={() => navigate("/main")}>
-        ← Back to Main
-      </button>
+      <div className="history-actions">
+        <button className="back-btn" onClick={() => navigate("/main")}>
+          ← Back to Main
+        </button>
+        <button
+          className="clear-btn"
+          onClick={async () => {
+            if (!user?.username) return;
+            try {
+              const res = await fetch(
+                `http://localhost:5000/history/${encodeURIComponent(
+                  user.username
+                )}`,
+                { method: "DELETE" }
+              );
+              if (res.ok) {
+                setHistory([]);
+              }
+            } catch (_) {
+              //error
+            }
+          }}
+        >
+          Clear History
+        </button>
+      </div>
 
       <ul className="history-list">
         {history.length === 0 && <li>No history yet</li>}

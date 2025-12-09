@@ -60,3 +60,20 @@ historyRouter.get("/:username", async (req, res) => {
     return res.status(500).json({ error: error.message });
   }
 });
+
+historyRouter.delete("/:username", async (req, res) => {
+  try {
+    const { username } = req.params;
+    if (!username) {
+      return res.status(200).json({ success: true });
+    }
+
+    const usersCollection = await users();
+    await usersCollection.updateOne({ username }, { $set: { history: [] } });
+
+    return res.status(200).json({ success: true });
+  } catch (error) {
+    console.error("Error clearing history:", error);
+    return res.status(500).json({ error: "failed" });
+  }
+});

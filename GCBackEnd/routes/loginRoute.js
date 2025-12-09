@@ -14,7 +14,6 @@ loginRouter.route("/").post(async (req, res) => {
     const usersCollection = await users();
     const user = await usersCollection.findOne({ username: username });
     if (!user) {
-      // user doesn't exist
       return res.status(401).json({ error: "Invalid username or password" });
     }
 
@@ -22,7 +21,6 @@ loginRouter.route("/").post(async (req, res) => {
       return res.status(401).json({ error: "Invalid username or password" });
     }
 
-    // Successful login
     return res.status(200).json({
       success: true,
       user: {
