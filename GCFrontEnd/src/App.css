@@ -2,13 +2,13 @@ body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  background-color: #f7f7f7;
+  background-color: #2b2b2b;
 }
 
 .site-title {
-  font-size: 36px;
+  font-size: 40px;
   font-weight: 700;
-  color: #333;
+  color: hsl(0, 100%, 50%);
   margin: 0;
 }
 

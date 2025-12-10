@@ -49,10 +49,6 @@ button {
   cursor: pointer;
 }
 
-button:hover {
-  background-color: #45a049;
-}
-
 form p {
   margin: 0;
   text-align: center;
