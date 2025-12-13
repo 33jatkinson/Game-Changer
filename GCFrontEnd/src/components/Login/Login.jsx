@@ -18,7 +18,7 @@ export function Login() {
         body: JSON.stringify({ username, password }),
       });
 
-      const data = await res.json().catch(() => ({}));
+      const data = await res.json();
 
       if (res.ok) {
         // Login succeeded — send user to main page
@@ -35,7 +35,7 @@ export function Login() {
           "Invalid username or password. Make sure you created an account."
         );
       } else {
-        const data = await res.json().catch(() => ({}));
+        const data = await res.json();
         alert(data.error || "Error logging in");
       }
     } catch (err) {

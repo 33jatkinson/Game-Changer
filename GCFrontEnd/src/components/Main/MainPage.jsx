@@ -13,7 +13,7 @@ export function MainPage() {
   useEffect(() => {
     const sessionStr = localStorage.getItem("session");
     if (!sessionStr) {
-      navigate("/"); // not logged in
+      navigate("/");
       return;
     }
 
